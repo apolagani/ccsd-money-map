@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCSD Money Map | FY2026 + Special Education &amp; IEPs</title>
+<style>
+  :root{
+    /* Official CCSD palette (CCSD Media Kit, newsroom.ccsd.net) */
+    --ccsd-blue:#1771B7;      /* Primary: Blue, PMS 660 */
+    --ccsd-navy:#052C49;      /* Primary: Dark Blue, PMS 7463 */
+    --ccsd-gray:#898A8D;      /* Primary: Gray, Cool Gray 8 */
+    --ccsd-lightgray:#D9D8D6; /* Secondary: Light Gray, Cool Gray 1 */
+    --ccsd-darkgray:#54565B;  /* Secondary: Dark Gray, Cool Gray 11 */
+    --ccsd-lightblue:#C8D6EB; /* Secondary: Light Blue, PMS 657 */
+    /* Working tokens built from that palette */
+    --ink:var(--ccsd-navy);
+    --green:var(--ccsd-blue); --green-dk:#0F5C96; --green-lt:#E8EFF8;
+    --gold:var(--ccsd-lightblue); --gold-lt:#E8EFF8;
+    --teal-lt:#fff; --teal-chip:var(--ccsd-lightblue);
+    --grey-bg:#ECEBE9; --grey-chip:var(--ccsd-lightgray); --grey-tx:var(--ccsd-darkgray);
+    --line:var(--ccsd-lightgray); --grey:var(--ccsd-darkgray);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+  .sheet{max-width:1220px;margin:0 auto;padding:32px 28px 20px;}
+  header.top{border-top:8px solid var(--ccsd-navy);padding-top:18px;margin-bottom:6px;display:flex;gap:22px;align-items:center}
+  .brand-logo{width:84px;height:84px;flex:none;display:block}
+  .titleblock{min-width:0}
+  h1{font-size:44px;font-weight:800;letter-spacing:.5px;margin:2px 0 0;text-transform:uppercase;color:var(--ccsd-navy)}
+  .subhead{border-bottom:3px solid var(--ccsd-blue);width:260px;margin:8px 0 4px;}
+  .tagline{color:var(--grey);font-size:14px;margin:6px 0 0;max-width:980px;}
+  .canvas{position:relative;margin-top:30px;}
+  svg.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+  .tier{position:relative;z-index:1;display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin:0 0 50px;}
+  .tier.left{justify-content:flex-start;padding-left:52px;}
+  .node{position:relative;display:flex;align-items:stretch;min-height:46px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.06));}
+  .node .body{padding:10px 13px;font-weight:700;font-size:13.5px;display:flex;flex-direction:column;justify-content:center;line-height:1.2;border-radius:2px 0 0 2px;}
+  .node .chip{padding:10px 12px;font-weight:800;font-size:14px;display:flex;align-items:center;white-space:nowrap;border-radius:0 2px 2px 0;}
+  .green .body{background:var(--green);color:#fff}   .green .chip{background:var(--green-dk);color:#fff}
+  .source .body{background:var(--ccsd-navy);color:#fff}  .source .chip{background:#021B2E;color:#fff}
+  .gold .body{background:var(--gold);color:var(--ccsd-navy)}  .gold .chip{background:#9DB6DD;color:var(--ccsd-navy)}
+  .goldlt .body{background:var(--gold-lt);color:var(--ccsd-navy)}  .goldlt .chip{background:var(--ccsd-lightblue);color:var(--ccsd-navy)}
+  .teal .body{background:var(--teal-lt);color:var(--ccsd-navy);box-shadow:inset 0 0 0 2px var(--ccsd-blue)}  .teal .chip{background:var(--teal-chip);color:var(--ccsd-navy);box-shadow:inset 0 0 0 2px var(--ccsd-blue)}
+  .grey .body{background:var(--grey-bg);color:var(--grey-tx)} .grey .chip{background:var(--grey-chip);color:var(--grey-tx)}
+  .sub{font-weight:600;font-size:11px;opacity:.82;margin-top:2px}
+  .label{position:absolute;top:-19px;left:2px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);white-space:nowrap;background:#fff;padding:1px 6px}
+  .group{position:relative;z-index:1;border:1.5px solid var(--ccsd-lightblue);background:#F5F8FC;border-radius:8px;
+    padding:16px 13px 12px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-content:flex-start;}
+  .group .glabel{position:absolute;top:-19px;left:6px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--grey);background:#fff;padding:1px 6px}
+  .group .node{filter:none}
+  .group .node .body{font-size:12px;padding:8px 10px}
+  .group .node .chip{padding:8px 10px;font-size:13px}
+  .grouprow{position:relative;z-index:1;display:flex;justify-content:center;gap:26px;flex-wrap:wrap;align-items:flex-start;}
+  #instrpanel{max-width:340px}
+  #supportpanel{max-width:700px}
+  .note{font-size:12px;color:var(--grey);line-height:1.55;border-top:1px solid var(--line);margin-top:24px;padding-top:12px}
+  .note b{color:var(--ink)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--ink);margin-top:8px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .sw{width:13px;height:13px;border-radius:2px;display:inline-block}
+  @media (max-width:780px){ h1{font-size:32px} .tier{gap:14px} .tier.left{padding-left:0} }
+
+  html{scroll-behavior:smooth}
+  a{color:var(--ccsd-blue);text-underline-offset:3px} a:hover{color:var(--ccsd-navy)} a:focus-visible,summary:focus-visible{outline:3px solid var(--ccsd-blue);outline-offset:4px}
+  .sheet{max-width:1280px}
+  .tagline{line-height:1.6;max-width:1100px}
+  .canvas{padding:0 22px}
+  .node{min-width:0}.node .body{min-width:0;flex:1}.node .chip{justify-content:center}
+  .tier.left{padding-left:0;justify-content:center}
+  .resource-row{display:grid;grid-template-columns:1.7fr 1.1fr .8fr 1.15fr;gap:18px}
+  .allocations{display:grid;grid-template-columns:1fr 1fr 1.55fr 1fr}
+  .allocations .node .chip{padding:10px 8px}
+  #instrpanel{max-width:360px} #supportpanel{max-width:700px}
+  #general-details{display:grid;grid-template-columns:minmax(0,360px) minmax(0,700px);justify-content:center}
+  #instrpanel .node{width:100%}
+  .special-section{position:relative;margin-top:54px;padding-top:28px;border-top:2px solid var(--line);scroll-margin-top:20px}
+  .section-heading{position:relative;z-index:1;background:white;width:fit-content;margin-bottom:42px}
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--ccsd-blue)}
+  h2{font-size:29px;margin:5px 0 7px;letter-spacing:-.5px;color:var(--ccsd-navy)}.section-heading p{font-size:13px;color:var(--grey);margin:0}
+  .se-inputs{justify-content:space-around;margin-bottom:52px;gap:30px}
+  .se-hub-row{margin-bottom:48px}
+  .special .body{background:var(--ccsd-darkgray);color:white}.special .chip{background:#3A3C40;color:white;font-size:18px}
+  .special .body{font-size:16px;padding:15px 18px}.special .sub{font-size:12px}
+  .se-columns{position:relative;display:grid;grid-template-columns:1.18fr 1.18fr .95fr;gap:24px}
+  .se-column{min-width:0}.se-column>.node{min-height:64px;z-index:1}.se-column>.node .body{font-size:13px}
+  .se-detail{margin-top:45px;padding:16px 12px 12px;gap:10px}.se-detail .node{width:100%}.se-detail .node .body{font-size:12px}
+  .balance-note{position:relative;z-index:1;margin-top:24px;padding:16px;background:#F4F4F3;border:1px solid var(--ccsd-lightgray);border-radius:7px;font-size:12px;line-height:1.6;color:var(--grey-tx)}
+  .source-link{display:block;margin-top:9px;font-size:11px}
+  .se-reconcile{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;background:#E8EFF8;border:1px solid var(--ccsd-lightblue);padding:17px;margin-top:24px;border-radius:7px;text-align:center;font-size:13px}
+  .se-reconcile strong{color:var(--ccsd-navy);font-variant-numeric:tabular-nums}.se-reconcile span{font-size:12px;color:var(--ccsd-darkgray)}
+  .note p{margin:0 0 14px}.note a{white-space:normal}
+  .legend{margin-top:26px;gap:12px 18px}
+  .audit{margin-top:22px;border:1px solid var(--line);border-radius:7px;font-size:12px;line-height:1.6}
+  .audit summary{cursor:pointer;padding:15px;font-weight:700;background:#F5F8FC;color:var(--ccsd-navy)}.audit p{margin:15px}.audit-table-wrap{overflow:auto;margin:15px}
+  table{width:100%;border-collapse:collapse;text-align:left}caption{text-align:left;margin-bottom:9px;color:var(--grey)}th,td{padding:9px 12px;border-bottom:1px solid var(--line)}th{background:#E8EFF8;color:var(--ccsd-navy)}td:nth-child(2){white-space:nowrap;font-variant-numeric:tabular-nums}
+  @media(max-width:1050px){.resource-row{grid-template-columns:1fr 1fr}.canvas{padding:0 18px}.tier{row-gap:38px}.allocations{grid-template-columns:1fr 1fr;row-gap:32px}.se-columns{grid-template-columns:1fr 1fr}.se-interdistrict{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px}.balance-note{margin-top:0}.se-column.se-interdistrict>.node{min-height:68px}.label{font-size:10px}}
+  @media(max-width:700px){.sheet{padding:22px 12px 18px}header.top{gap:14px;align-items:flex-start}.brand-logo{width:60px;height:60px}h1{font-size:31px}.subhead{width:210px}.tagline{font-size:12px}.canvas{padding:0 16px}.tier.left{display:flex;flex-direction:column;align-items:stretch;gap:32px}.tier{row-gap:28px}.allocations{grid-template-columns:1fr 1fr;column-gap:12px!important}.allocations .node{flex-direction:column}.allocations .node .chip{justify-content:flex-start;padding:7px 10px}.allocations .node .body{padding:10px;font-size:12px}.label{font-size:9px;letter-spacing:.15px;white-space:normal;max-width:100%}#general-details{grid-template-columns:1fr;gap:32px}#instrpanel,#supportpanel{max-width:none}#supportpanel .node{width:100%}.group .glabel{font-size:10px}.section-heading p{line-height:1.5}.se-inputs{flex-direction:column;gap:38px}.se-inputs .node .body{font-size:12px}.se-inputs .node .chip{font-size:13px;padding:10px}.se-columns{grid-template-columns:1fr;gap:32px}.se-interdistrict{grid-column:auto;display:block;margin-top:0}.balance-note{margin-top:20px}.special .body{font-size:14px;padding:12px}.special .chip{font-size:16px;padding:10px}.se-reconcile strong{font-size:12px}.se-detail{margin-top:36px}.node .sub{line-height:1.35} .se-column .sub{font-size:11px}}
+  @media print{.sheet{padding:8px;max-width:none}.audit{break-before:page}.audit summary{display:none}.audit>*{display:block}.special-section{break-before:page}.node,.group,.se-reconcile{break-inside:avoid}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.section-heading{margin-bottom:36px}}
+  .parallel-funding{position:relative;z-index:1;margin-top:22px;padding:20px;border:1px solid var(--ccsd-lightblue);border-radius:7px;background:#F5F8FC}.parallel-funding .eyebrow{color:var(--ccsd-navy)}.parallel-flow{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:17px 0}.parallel-flow span{background:var(--ccsd-lightblue);color:var(--ccsd-navy);padding:11px 15px;font-size:12px;font-weight:700;line-height:1.45;border-radius:3px;flex:1}.parallel-flow b{font-size:19px;color:var(--ccsd-blue)}.parallel-funding p{margin:0;font-size:11px;line-height:1.6;color:var(--ccsd-darkgray)}
+  @media(max-width:700px){.parallel-flow{flex-direction:column;gap:9px}.parallel-flow span{width:100%;text-align:center}.parallel-flow b{transform:rotate(90deg)}}
+  /* IEP layer */
+  .iep-tag{display:inline-block;align-self:flex-start;margin-top:6px;padding:2px 8px;border-radius:10px;background:var(--ccsd-blue);color:#fff;font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;font-style:normal;line-height:1.45;white-space:nowrap}
+  .iep-strip{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:-16px 0 50px}
+  .iep-stat{background:#E8EFF8;border-left:4px solid var(--ccsd-blue);border-radius:3px;padding:13px 15px;display:flex;flex-direction:column;gap:4px}
+  .iep-stat b{font-size:26px;line-height:1.1;color:var(--ccsd-navy);font-variant-numeric:tabular-nums;letter-spacing:-.3px}
+  .iep-stat span{font-size:12px;line-height:1.45;color:var(--ccsd-darkgray)}
+  .iep-stat.alert{border-left-color:var(--ccsd-navy);background:#fff;box-shadow:inset 0 0 0 1px var(--ccsd-lightblue)}
+  .iep-flow{position:relative;z-index:1;margin-top:22px;padding:20px;border:1.5px solid var(--ccsd-blue);border-radius:7px;background:#fff}
+  .iep-steps{list-style:none;counter-reset:iep;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:16px 0 16px;padding:0}
+  .iep-steps li{counter-increment:iep;position:relative;background:#F5F8FC;border:1px solid var(--ccsd-lightblue);border-radius:5px;padding:38px 14px 14px;font-size:12px;line-height:1.5;color:var(--ccsd-darkgray)}
+  .iep-steps li::before{content:counter(iep);position:absolute;top:11px;left:14px;width:20px;height:20px;border-radius:50%;background:var(--ccsd-blue);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .iep-steps li b{display:block;color:var(--ccsd-navy);font-size:13px;margin-bottom:3px}
+  .iep-flow>p{margin:0;font-size:11.5px;line-height:1.6;color:var(--ccsd-darkgray)}
+  .iep-flow>p b{color:var(--ccsd-navy)}
+  .parallel-flow span small{display:block;font-weight:600;font-size:11px;color:var(--ccsd-blue);margin-top:2px}
+  .legend .iep-tag{margin:0}
+  @media(max-width:1050px){.iep-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.iep-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:700px){.iep-strip{gap:10px;margin:-10px 0 44px}.iep-stat{padding:11px 12px}.iep-stat b{font-size:21px}.iep-stat span{font-size:11px}.iep-steps{grid-template-columns:1fr}.iep-flow{padding:16px}}
+  @media print{.iep-strip,.iep-flow{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header class="top">
+    <img class="brand-logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gIcSUNDX1BST0ZJTEUAAQEAAAIMbGNtcwIQAABtbnRyUkdCIFhZWiAH3AABABkAAwApADlhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApkZXNjAAAA/AAAAF5jcHJ0AAABXAAAAAt3dHB0AAABaAAAABRia3B0AAABfAAAABRyWFlaAAABkAAAABRnWFlaAAABpAAAABRiWFlaAAABuAAAABRyVFJDAAABzAAAAEBnVFJDAAABzAAAAEBiVFJDAAABzAAAAEBkZXNjAAAAAAAAAANjMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0ZXh0AAAAAEZCAABYWVogAAAAAAAA9tYAAQAAAADTLVhZWiAAAAAAAAADFgAAAzMAAAKkWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZWiAAAAAAAAAkoAAAD4QAALbPY3VydgAAAAAAAAAaAAAAywHJA2MFkghrC/YQPxVRGzQh8SmQMhg7kkYFUXdd7WtwegWJsZp8rGm/fdPD6TD////bAEMABQMEBAQDBQQEBAUFBQYHDAgHBwcHDwsLCQwRDxISEQ8RERMWHBcTFBoVEREYIRgaHR0fHx8TFyIkIh4kHB4fHv/bAEMBBQUFBwYHDggIDh4UERQeHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHv/AABEIAIUAhQMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABgcDBAUIAQL/xAA/EAABAwQBAwICCAQDBgcAAAABAgMEAAUGESEHEjETQSJRCBQVFldhltMjMnGBM0JSFyQnYoKRR3V2kqGy0f/EABsBAQADAQEBAQAAAAAAAAAAAAACAwQFAQYH/8QANBEAAQMCAwUFBwQDAAAAAAAAAQACEQMhBBIxE0FRYfAUInGBsQUyYpGS0eFyoaLBI0JS/9oADAMBAAIRAxEAPwD2XSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlYJUuLF7frMhlnvOk+osJ7j8hvzRNFnpXxC0qSFJIUD4I5Br7REpSlEQnQ3UHzLqli+NXlqxLXMut7dICbbbGC+/sjY2AdJ450TvXPis3WnK3MN6bXa+xu36222GovcNj1VntSf7E7/tVUfQzsrUm3X/ADGcTJuUmYYokOnuXoJC1nZ91KWNn37RW/D4VpoOxFT3RYDiVir4lwrNoM1N54BTq49YYtjaTJyfC8vscNSgkSpEJDjSd+O4trPb/epbgeZ2PNbdLuNgfckRI0pUUuqb7QtSUpVtIPPbpQ869+K7c2JGmQ3oktht+O8gocacSFJWk+QQfIqoLFan+jGGdQJrbSF2lmSZtoCnO4qC20pCFDyO1fannyBuotbRrMIaIfaL2Mn1XrnVaTgXGW3m1wplnfU3FcRnM2yfIkS7tII9G3QGS/JXvx8I8b9tkb9q4tx6uos8UzcgwPMrTbx5luwkLQgfNfYslP8Aeq1+h5bTfciybNry6qbdUuIZQ+78SgpwFTix8iQEp/IbHivSrrLTrS2nG0rbWkpUlQ2FA+QR7ircVRo4SrsSMxGpmPl+ZUMPUq4mntQYB0tPzUawHPcdzdE9zHZLslmC4htx1TRQlRUgKHaDzx4OwOQa4t76s2ONkz2M2K2XfJ7vHBMhi1MpWljR0QtalBII8efPHnitLp3gErCsjzZu0NIZs10Sy/bQlwbad7XAtvXkBJKdH5ED2qg/o2dQ7V0+yC8wMqZfYRPUhDkr0ytTDralBQWB8WiVHZG9EeKupYGlW2r6MuDQIG8zrPhyVNTGVKezbU7pcTJ3W+69CY11cs95zWPhy7LfbXeXQ4Vx58ZLfpBKCvZIUd9wHGqy511aseFzVsX6z5EwyHfSalpgdzDyu3u+Bfdzxv5eDWZi34lnWS2DObFeI8qRZlOIDsRSVeohaFJ9Jz3TonuA4Pn51BfppoJ6a2tY1pN3QD/dpyqsPRoVcSykWkTYjeDdWVqtalh31JBjQ8QpTaes1nu1rVdLViuZT7eklJkx7T3o2PPhezr8hW/hvWDAsonptsG8fV7gpXYmLNaUw4pX+kd3BP5A7rjfRPbKeiVqKiPjfkqGvl6yv/yob9MHBYCrC1nFvjIYnRn0NTlNjXrNqOkrVr/MlWhvzo/kKsbhsM/FOwxkXIBmfmFA18Q3DiuINpI+y9Dk7SdV4X+kheZ936vXxmbJW+zb5H1WK2r+VpCUjhI9tnZJ969I/RczKblvTn0rq+p+fan/AKo48s7U6jtCm1KPudHRPv2796855zimS5h1fzYY/aZNwVDuEhx/09aQkKIA2fKjrhI5OuK3exaIw2LqCrAyjXzCx+1apxGGYac94qCW29Xm2kG3Xe4QyOR6Epbev+xFX/8AROznK73nsuzXvIJ1xh/Zq3kNynPUIWlaACFHnwo+9eclJKVKSpJSoHRBGiD8iKub6G5/4uPf+VP/AP3brve1qNM4So7KJhcf2bVqDEsbJiV7IpSlfni+4VW/SntMi6dGboYyStcJxqWpIHJQhXxf9kkn+1QD6FGQx/s2+Ys66lMhD6ZzCCeVoKQhev6FKf8A3V6NkstSI7jD7aHGnElC0LG0qSRogj3BFebsq+j9kVhyhGRdML03FLTnqMx33S25HJ8pSvRC0e2le3B3XZwVejUwr8JVdlkyDunmuVi6NRmIbiaYmLEL0rviq86/xRfOk2UWiC629OZholKYQoFwJQsLG0+eQhWvno1GLcfpFXBpECWMTs6f5XLgU+q5r/UEJJST/YD+lWFgOHRMXgye+XIul0nLDlxuUo7elLA0N/JIHCUDgD+9YgwYZwfmBIIIAvoVqznENLMpAI32VBfQoyKNGu98xt9xKXZqG5cbZ/nKAUrA/PtKT/QH5V6lBFeceoH0e7pGyT7ydNrq1b3g966Ijrimiw5ve2nADof8pHHjeuKkFrX9I5+Oi3yWcThkcKuLpC16/wBXYgkE/wDSK3+0GUcXU7RSqATqDYg9cFjwTquFZsajCY0IuCrldnQ231xlSWg+hkvqa7x3hsHXf2+db4343VT5J0z6f9XrLGy22+vAkT2/UbnxkdineSP4rauFEEEeyvzqUYzgjlmst2efujl4ye6x1NyrrLGis9pCEJSP8NpJPCR/Xk1CenuLdU+l9rNltcezZdaD/EbbVMMN2O4R8YSVJIKCdn/542RWTDxTl1GpDhEbpG/Xy1WmtL4bVZLTrvjh0FTtstOS9GuudotiZ6Xky32EqWztKJkZ1zsIUk+CDvg70QCDVtfTTUodNrWkHg3dG/z005W5Y+nGVZR1SjdQOoSbdD+zwkW+1Q3S6EFBJQVr1o6USr32deANV96+YXn/AFDjtWaBBscS3Q5vrsyHbgv1Hx2FI7kBvSf5j7nwK6hxdOri6NR7hLR3ju/PkueMM+nhqrGgwT3RvXS+iaononbNkkCRJA/IesqtP6Xl6j2/pM7bFrT9YukpplpHuQhQcUr+gCQP+oVrdLbB1bwPEvu2xZsWuLTbq3GH13Nxso7zshQDZ7hvfy81oTei2VZzlLd96nZLEcZaHa3b7UhQQhG99iVq12g+5AKj8/Gsw2Lcc6u94ygza5O8dFXf5ThBRY05iIvYBZvoY2aTC6fXG6yEKQi5TiWNjXchtIR3D8iruH9q6+fY5fsJyiV1GwZlya3JIXf7ICdS0Dy838nANnj8/mQbWtcCHa7dHt9vjtxokdtLTLTY0lCQNAAVskbrFVxzn4h1aLO1HLgtlPCBtBtKbjfzXmfqp0/snUzHh1K6bBuRNcHfNghOjJUOVApH8rw90/5x450Tq9C7/YL711guWDGm7A1GsT0Z5oElTi0FA7jzx8IA153vZPmrAzXFrzgWRSOoHT+IZEZ4919sKNhEpI3t5oD+VweeB8zzyDn6R4lCvF0g9XJDYh3e6xnluRI7QbZCXFfCVA8qWEp0V8d29kV0e1N7KQ4y2CG3uCdxG/kehgGGPaAQIdIJtYxvB/pW3SlK4C7a5GUQr3NgttWK9s2iQHApbzkISQpOj8PaVJ1zo737VHRj3UX8RIP6dR+7WPrxeZ1j6euyoUh2Gl2ZGjypbR0uNHcdSlxxJ9iEkjftvddKJitit16ttztTqoC0JW0Gm31dkxKkHXcCdLUNdwVyrg+xNaWZmUw6153A6eKzOhzyL2jeRqtEY91FP/iJB/TqP3afd7qL+IkH9Oo/drl9IG4lvm59MeWGWo2QyGgtxw9rLKG21doJPwpBUo/3rW69P3adbHodi+v/AFmzxReCqKeC6he2UL5G0kIdJHPgcVcA/a7OR45R9lVLdlnv4Zj913fu91F/ESD+nUfu0GPdRfxEg/p1H7tcHrPdIt76Ix7/AAlKKZT1vkRlNuFKgHH2wQCCPKVKSf6ms/R3/fr3m6f4sS3JuCYiLG+6VrhKSjS1HkhKXdhQCCU65B3uvcr9kahixj3Ry5c15LNoGCb/ABHn9l1/u91F/ESD+nUfu0+73UX8RIP6dR+7Va9DZcW4qx2y5EzIZ9NiROtKnHlKRcXg+4lxSlb2VNpSkBs+3xc6GrL653m5WDpZerpaXVsyW0IT66OVMIW4lK3B+aUkkH280qMqMrCjaSY90cY4daJTcx9I1LwOZXwY91F/ESD+nUfu0+73UX8RIP6dR+7WzBxXHokqy3W1SVxC0sdjiJKiJ6VtqAS5tX8QnfeFHZ2nfzqI4BCh5zZ8nueTPPm5Ju0uJ3CQptdsbaVptLWiPTIGl9w5UTs7qLXEgukQPhG9TIAIF5PxFSX7vdRPxEg/p1H7tPu/1F/ESD+nUfu1XdzuNwyHohgd4vTi3Zj18hMvyO4tl9lUgtlStEcOJCSfY7qx1WyI51Yd7o4Ug2EIWnuOtF4pHG9cpBG9b0Kk9r6YuRvHujd5KLC1+k7v9jvX4+73UX8RIP6dR+7T7vdRfxEg/p1H7tVYuRPxLDpFuvL8qdieRR3fqEpbilLtk7au1kq33BtRAKDvhQ1Uw6+Y7b4HTfIchjh9NxbiRWGHA8oeghDqUhKNEdu+5Wz5O6ns3B7WyIcYByjrxVYqAsc6DYSe8VI/u/1E/ESDv/06j92tuy2XNo10YfuWaxJ8NCtuxkWRLJcGjx3hw9vOj4r8yOn9hesl4trCJERq7oQXPSeUPRdSjtS43ztKhwfOjr+u4v0Ziyr7HizL6039ZxRb1lb9NatPSGldrkgj32AkJB3olZ9xqnNmY50iB8I61VwGV4EG/wARVsUpSsS2LhZtcrZb7KpN3tky5Q5SvQcjx4C5fcCCSFISD8Oh5I14qCY5eMCx54PWjEcpjrSj02ybFNc9JB8pR3g9g/JOhU5z3Jo2KWD7VkthwKkMxkBTgbQFurCElazwhAJ2Vc6Hsa5U/NpNuhR0TrKftOdcRAtsaPKDjcwlAX6qXCB2thPcSSNjtI0TqtVEHJEEg84WWqRnmRblKiYmdOQiQ2MOysIkviRIT9iz+190EHvWNaWdged+BXRRlGHIk3KSnGsuD10R2TF/Yk7bo0Ro8caBIGtaHArpZRm96xu23iZc8XCkW2B9eDrE7uZfQFaWhKi2CFp4OlAA74Py2L1mky2O4oy5Zm1uZDJTG0JuhGWUFzk9nxDtB8a50Pzq2C6+Umfi81XYbx9Pkov9odO/u63j33Myf7JbdDzcT7Cm+mlQ5BA1xo8geAefPNbjeR4S3eHru3i2Vt3B+OmM9IRY5qVutgaAUQn4tDwTyPnXbGbXC4IvErGrAbtCtL64zjhlhpcl1v8AxEsJKSFdvjaikFQIHzr8sdRbddGcfRjcddyl35hcmM0tfopZZb4ccdOiUhKj26AJKuB7mkG/dPPved7eqCP+h9Pla6i4l9NxBgQU4TkyY9ufVIhoTYpw+ruK/mUggbST+X5/M1I5HUSwSIzkaRYMpeYcSULbcx2UpK0kaIIKOQRWOd1HXb4WTNT7Kpm8Y9E+vPw/rQKJMYgkOsu9vIPaRopBBGj86l+NXB27Y9Bur0cRlS46Hw0l31OwKAUB3aGzoj2qNSwzPafq8+CkyScrXD5eXFVvj116fWCSl+0YdlEZbYKWh9hTVpZB8htKgQ2D/wAoFfq53fALjOkzZeH5Qp+WkIlFFimtiSkeA6lIAcHt8QPHFd2Pm15l3vJbVBxhMp7H3GkOpRcQFSA4jvT6YKAN9vsojnjfvWBjqbGuEjETZbcZkTJnHWmnXZHpLjLaSVOJcR2nkdpHB8j5c1ZleTOUz+rlPpdQlsRmEfp5x62WG6ZjiN0sq7NPxXJJFuWgIMZWNyuztH8oACONaGta1oarHZ8rxG0sPtQMcy9v6wAHnFWWctxYA0AXFAq4BOueN8aratfUC53q3v3DH8cTco4cksNpRPT6yHWlFKUvN9v8MLUk6OzoaJHNfWs5yGRe77ZomKMvzLIYplJbuXd3peHdtsemO4pTs6PbsjQqGSJblNte8PBe55g5h9JXPayPCG8bVjgxPJ1WlQIMVywTFo/m7v8AMkkc8/kazZHl2IZFbFW29YxlU2GpQUpldgmBCiPGwEjfz0a+v9UXIhmvzrAW4MLIBYn3mpoWv1VFIS4lBSO5O1p2Ae4c8HVbrvUZiDdcvj3iAIcPF2WnZElEj1S8HU9zYQjtHJHGifJA5817s3TOQ8fe8OWtwmcRGYfLx58ivkXqHYY0RuKzZMvDTaAhINhmKIA/Mp2f7mseB3rE4dwVbLBjuRW5VwfLrqn7RKbaU4QSVrW4NAnXJPk63ut24ZRlMKDFlLwxb31tJDTUecHHGnOxSkIdHYAnuICSpJUEk88cnROdZEu/XewxsTYfuNqiR5TzaLpsLS6T8KNtjuUAlXB1vQ0eagKYLTlb/IdaqWeCJP8AEqw6V8B2N0rGti4edQp9wsRiQoFuuKHHUCVEnf4b7G/jRsggKI8EjW6rSL0uvdvtzE/HhEtsu2X5V0tNqfkqcYaZU0G3GC4BtPf8SuAQneueTV0Uq+liX0hDVRUw7KhlyrzNoGZ5XgN9s6rTbre5Pgqissmd6h71eXFLCQAkD2AJO/bVc+84LKVccJn2jH7XEetExEm4FtxLalANFspSQn4+T3c68fOrTpRmIcwQ22v7iOKOw7XGXdQZVcYvYcqwtm82izQoF0gSpr0y2vOyiyqOp5Xcpt4dpKkpUSQpOyRxoVzbL01umIPYtdbBIj3KZaYT8K4Mvq9ES233PVWps6IQpLhJAPBHGx5q2dUr3tVS/PXnaP7XnZmW5acryqpyXCcgvwy6+PMRWbleLJ9iwIYk7Sy1tRLjrnboqKlb0kHQAGyTUpxJnJ4jNltUqBEiwIUBLUl36wHVuuJQlCQgADSeFEk88Aa81LdUqL67ntynT8QpNoNa7MOt6rS02jMrTmGZ3qFaLc4b47HVD9afpLRaa9PbgCCdb+LSdn2rm2vpzebA/gTEEsXBqxSpUy5Pqd9IvOyEqCihGjwCskAkcceat2lT7XUGnVo9FDsrOvGfVVZY8HuY6g2vJpFptlquEZT5us6A+Qm5oUkpQktADnZSolXgp43vY7WI2K9QepmXX2ZFYRAvIiiOpMgKWn0EFB7k647t7Gide9TnVNVF2Ie4EHhHlMqTcO1sRxn9oVLf7O8nbvE/JocWC3eWskVdYTT0srYkR3EpQtpwdukLASVJWASCeD5rcuXT69ZHN6gN3Rli3RsnjxBFdRIDq2HY6NAqSANgqAPB8A1buqVZ22rrv/IPqFDslPrzH9qI4q/nS2ocO+2u0xVsACXLZmKeS/oa/ht9qSnu0D8R454NaeP2G9RermQ5HJisJttxhRozKkv9ywWSvZUnXAV3ccnWuanVKp2pGaABP3lW7IWk6JSlKqVqUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoi/9k=" alt="Clark County School District logo" width="84" height="84">
+    <div class="titleblock">
+    <h1>CCSD Money Map</h1>
+    <div class="subhead"></div>
+    <p class="tagline">How money moves from its sources, through the district, to schools and students &nbsp;&middot;&nbsp; General Fund + Special Education Fund + IEPs, Fiscal Year 2026 Final Budget &nbsp;&middot;&nbsp; ~285,800 students. Adopted May 19, 2025. The General Fund balances: $3.99B available = $3.99B allocated.</p>
+    </div>
+  </header>
+
+  <div class="canvas" id="canvas">
+    <svg class="wires" id="wires" aria-hidden="true"></svg>
+
+    <!-- ROW A: total state funding, splitting to the weighted allocation (side) -->
+    <div class="tier left" style="margin-bottom:54px">
+      <div class="node source" id="statefund"><span class="label">PCFP funding from the state</span><div class="body">State Education Fund (PCFP)<div class="sub">Excludes separate state grants shown below</div></div><div class="chip">$3.56B</div></div>
+      <div class="node teal" id="weighted"><span class="label">State allocation &middot; bypasses the General Fund</span><div class="body">State Weighted Allocation<div class="sub">at-risk $174M &middot; English learners $159M &middot; gifted $5M</div></div><div class="chip">$338M</div></div>
+    </div>
+
+    <!-- ROW B: what actually makes up the General Fund -->
+    <div class="tier left resource-row" style="margin-bottom:54px">
+      <div class="node green" id="statshare"><span class="label">Available resources ($3.99B)</span><div class="body">State share to General Fund<div class="sub">base $2.696B + transport $141M + special ed $384M</div></div><div class="chip">$3.22B</div></div>
+      <div class="node green" id="local"><div class="body">Local Sources<div class="sub">interest, fees, tuition &amp; other local revenue</div></div><div class="chip">$56M</div></div>
+      <div class="node green" id="fed"><div class="body">Federal<div class="sub">in the General Fund</div></div><div class="chip">$2.4M</div></div>
+      <div class="node grey" id="carry"><div class="body">Carryover & Other<div class="sub">opening fund balance + other sources</div></div><div class="chip">$714M</div></div>
+    </div>
+
+    <!-- ROW C: hub -->
+    <div class="tier" style="margin-bottom:54px">
+      <div class="node green" id="gf" style="transform:scale(1.08)"><span class="label">The main operating account</span><div class="body">CCSD&nbsp;General&nbsp;Fund</div><div class="chip">$3.99B</div></div>
+    </div>
+
+    <!-- ROW D: how the resources are allocated -->
+    <div class="tier allocations" style="margin-bottom:52px;gap:18px">
+      <div class="node gold" id="instr"><span class="label">How it's allocated ($3.99B)</span><div class="body">Instruction &amp; programs<div class="sub">56% of operating spending</div></div><div class="chip">$1.80B</div></div>
+      <div class="node gold" id="support"><div class="body">Support Services<div class="sub">44% of operating spending</div></div><div class="chip">$1.40B</div></div>
+      <div class="node grey" id="transfers"><div class="body">Transfers to other funds<div class="sub">$573M Special Ed + $21M EL/Gifted<br><a href="#special-education">Follow the special education transfer &darr;</a></div></div><div class="chip">$594M</div></div>
+      <div class="node grey" id="reserve"><div class="body">Ending fund balance<div class="sub">retained, not spent</div></div><div class="chip">$193M</div></div>
+    </div>
+
+    <!-- ROW E: children grouped in enclosed panels -->
+    <div class="grouprow" id="general-details">
+      <div class="group" id="instrpanel"><span class="glabel">Instruction &rarr;</span>
+        <div class="node goldlt"><div class="body">Regular Programs<div class="sub">classroom teachers, aides, supplies</div></div><div class="chip">$1.69B</div></div>
+        <div class="node goldlt" id="gf-special"><div class="body">Special programs in General Fund<div class="sub">Separate from the transfer below</div></div><div class="chip" title="$28,366,741">$28.4M</div></div>
+        <div class="node goldlt"><div class="body">Other programs<div class="sub">CTE, other PK–12, community &amp; activities</div></div><div class="chip" title="$82,285,955">$82.3M</div></div>
+      </div>
+      <div class="group" id="supportpanel"><span class="glabel">Support Services &rarr;</span>
+        <div class="node goldlt"><div class="body">Operations & maintenance</div><div class="chip">$522M</div></div>
+        <div class="node goldlt"><div class="body">School administration</div><div class="chip">$331M</div></div>
+        <div class="node goldlt"><div class="body">Student support</div><div class="chip">$185M</div></div>
+        <div class="node goldlt"><div class="body">Instructional staff support</div><div class="chip">$157M</div></div>
+        <div class="node goldlt"><div class="body">Transportation</div><div class="chip">$98M</div></div>
+        <div class="node goldlt"><div class="body">General administration</div><div class="chip">$64M</div></div>
+        <div class="node goldlt"><div class="body">Central services</div><div class="chip">$46M</div></div>
+        <div class="node goldlt"><div class="body">Other support</div><div class="chip">$0.9M</div></div>
+      </div>
+    </div>
+
+    <section class="special-section" id="special-education" aria-labelledby="special-title">
+      <div class="section-heading"><span class="eyebrow">Follow the $573M transfer</span><h2 id="special-title">Special education &amp; IEPs</h2><p>A separate fund that pays for the services written into students&rsquo; IEPs (Individualized Education Programs), supported by the General Fund and direct state aid.</p></div>
+      <div class="iep-strip" aria-label="Students with IEPs at CCSD">
+        <div class="iep-stat"><b>42,899</b><span>students with an IEP in 2024&ndash;25</span></div>
+        <div class="iep-stat alert"><b>14.5%</b><span>of CCSD students, above the 13% of enrollment the state fully funds</span></div>
+        <div class="iep-stat"><b>~4,400</b><span>students over that cap, who count for only half funding under state law</span></div>
+        <div class="iep-stat"><b>~$16,900</b><span>Special Ed Fund budget per student with an IEP (FY2026 average)</span></div>
+      </div>
+      <div class="tier se-inputs">
+        <div class="node grey" id="se-transfer"><span class="label">From transfers above</span><div class="body">General Fund transfer<div class="sub">Same $573M already allocated above</div></div><div class="chip" title="$572,699,871">$572.7M</div></div>
+        <div class="node source" id="se-state"><span class="label">Additional state funding</span><div class="body">Special Education Services Account<div class="sub">Direct state aid based on the number of students with IEPs</div><i class="iep-tag">Scales with IEP count</i></div><div class="chip" title="$153,947,750">$153.9M</div></div>
+      </div>
+      <div class="tier se-hub-row">
+        <div class="node special" id="se-fund"><span class="label">Dedicated special education account</span><div class="body">CCSD Special Education Fund<div class="sub">Pays for IEP services &middot; resources = spending</div></div><div class="chip" title="$726,647,621">$726.6M</div></div>
+      </div>
+      <div class="se-columns">
+        <div class="se-column">
+          <div class="node gold" id="se-programs"><div class="body">Special programs<div class="sub">Instruction + program-level support</div></div><div class="chip" title="$619,887,847">$619.9M</div></div>
+          <div class="group se-detail" id="se-program-detail"><span class="glabel">Program spending</span>
+            <div class="node goldlt"><div class="body">Instruction<div class="sub">Staff who deliver IEP instruction; 99% salaries &amp; benefits</div><i class="iep-tag">IEP service</i></div><div class="chip">$559.4M</div></div>
+            <div class="node goldlt"><div class="body">Other direct support</div><div class="chip">$58.0M</div></div>
+            <div class="node goldlt"><div class="body">Program-level transportation</div><div class="chip">$2.5M</div></div>
+          </div>
+        </div>
+        <div class="se-column">
+          <div class="node gold" id="se-support"><div class="body">Support services<div class="sub">Outside the special-programs subtotal</div></div><div class="chip" title="$104,437,774">$104.4M</div></div>
+          <div class="group se-detail" id="se-support-detail"><span class="glabel">Support spending</span>
+            <div class="node goldlt"><div class="body">Student transportation<div class="sub">A related service IEP teams can require; separate from $2.5M in programs</div><i class="iep-tag">IEP service</i></div><div class="chip" title="$103,662,892">$103.7M</div></div>
+            <div class="node goldlt"><div class="body">Student support</div><div class="chip" title="$624,270">$624K</div></div>
+            <div class="node goldlt"><div class="body">Operations &amp; maintenance</div><div class="chip" title="$150,612">$151K</div></div>
+          </div>
+        </div>
+        <div class="se-column se-interdistrict">
+          <div class="node gold" id="se-interdistrict"><div class="body">Interdistrict payments<div class="sub">Payments to other districts</div></div><div class="chip" title="$2,322,000">$2.3M</div></div>
+          <div class="balance-note"><b>This fund balances.</b><br>No opening or ending fund balance, federal revenue, or transfers out are budgeted here.<a class="source-link" href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=18" target="_blank" rel="noopener">Budget pp. 16–22 ↗</a></div>
+        </div>
+      </div>
+      <div class="se-reconcile"><strong>$572,699,871 + $153,947,750 = $726,647,621</strong><span>One transfer + direct state aid. The transfer is counted once when combining funds.</span></div>
+      <aside class="iep-flow" aria-label="How an IEP turns into funding">
+        <div class="eyebrow">How an IEP turns into dollars</div>
+        <ol class="iep-steps">
+          <li><b>Evaluation &amp; IEP</b>A team evaluates the student. If they qualify, the team writes an IEP listing the instruction, related services and supports they get.</li>
+          <li><b>Counted for state aid</b>Each student with an IEP counts toward state special ed aid, up to 13% of enrollment. Students past that count at half rate.</li>
+          <li><b>Money reaches the fund</b>That count drives the $153.9M in state aid. The General Fund transfers $572.7M to cover the rest so the fund balances.</li>
+          <li><b>Services delivered</b>The fund pays for IEP instruction, related services, transportation, supervision, and supplies and equipment.</li>
+        </ol>
+        <p><b>Not every special ed dollar follows the IEP count.</b> The $384M &ldquo;PCFP &ndash; Local Special Education&rdquo; amount inside the General Fund was set from past local spending, so it stayed at $383.97M in both FY2025 and FY2026. Federal IDEA grants are mostly allocated from late-1990s child counts plus population and poverty, not this year&rsquo;s IEP count. <a href="https://www.leg.state.nv.us/nrs/nrs-387.html#NRS387Sec122" target="_blank" rel="noopener">NRS 387.122 &#8599;</a> &middot; <a href="https://www.leg.state.nv.us/nrs/nrs-387.html#NRS387Sec047" target="_blank" rel="noopener">NRS 387.047 &#8599;</a> &middot; <a href="https://www.leg.state.nv.us/division/fiscal/K-12Education/PupilCentered/PupilCentered2025.pdf#page=11" target="_blank" rel="noopener">LCB PCFP overview &#8599;</a> &middot; <a href="https://webapp-strapi-paas-prod-nde-001.azurewebsites.net/uploads/nv_commission_sped_funding_053124_3bc03e8db4.pdf#page=5" target="_blank" rel="noopener">NDE special ed funding &#8599;</a></p>
+      </aside>
+      <aside class="parallel-funding" aria-label="Additional federal special education funding route">
+        <div class="eyebrow">Additional route &middot; Outside the $726.6M fund</div>
+        <div class="parallel-flow"><span>Federal IDEA grants<small>$63.7M spent in FY2025</small></span><b aria-hidden="true">→</b><span>Nevada Department<br>of Education</span><b aria-hidden="true">→</b><span>CCSD Federal<br>Projects Fund</span><b aria-hidden="true">→</b><span>IEP services for<br>eligible students</span></div>
+        <p>The $63.7M is FY2025 actual spending ($62.4M Part B grants to states + $1.3M preschool), not an FY2026 budget figure, so it is not added to any FY2026 total here. <a href="https://resources.finalsite.net/images/v1772555081/ccsdnet/swiie6cwphteqr2e8bab/2025-ACFR-2-26-2026.pdf#page=282" target="_blank" rel="noopener">CCSD FY2025 ACFR, printed p. 253 ↗</a> · <a href="https://resources.finalsite.net/images/v1771951633/ccsdnet/zozf04giqlc5c0fes2uf/policies.pdf#page=6" target="_blank" rel="noopener">Fund accounting policy ↗</a></p>
+      </aside>
+    </section>
+  </div>
+
+  <div class="legend">
+    <span><i class="sw" style="background:var(--ccsd-navy)"></i>PCFP funding / direct state aid</span>
+    <span><i class="sw" style="background:var(--green)"></i>Available resources &amp; operating account</span>
+    <span><i class="sw" style="background:var(--gold);border:1px solid #9DB6DD"></i>Spent running schools</span>
+    <span><i class="sw" style="background:var(--grey-bg);border:1px solid var(--ccsd-gray)"></i>Carryover, transfers &amp; ending balance</span>
+    <span><i class="sw" style="background:#fff;border:2px solid var(--ccsd-blue)"></i>Separate weighted allocation</span>
+    <span><i class="sw" style="background:var(--ccsd-darkgray)"></i>Special Education Fund</span>
+    <span><i class="iep-tag">IEP</i>Tied to students&rsquo; IEPs</span>
+  </div>
+
+  <div class="note">
+    <p><b>Read it top to bottom.</b> Nevada’s PCFP provides $3.56B: $3.22B enters the General Fund and $338M goes to separate weighted funds. The General Fund’s $3.22B includes $383,965,616 labeled “PCFP – Local Special Education.” It is already part of the General Fund resources, not another payment into the Special Education Fund. <a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=3" target="_blank" rel="noopener">Budget pp. 2, 5 ↗</a></p>
+    <p><b>What the new branch shows.</b> The $726.6M Special Education Fund receives $572.7M from the General Fund and $153.9M directly from the state’s Special Education Services Account. Its spending is $619.9M in special programs, $104.4M in support services and $2.3M in interdistrict payments. <a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=17" target="_blank" rel="noopener">Budget pp. 16–22, 104 ↗</a></p>
+    <p><b>Where IEPs fit.</b> An IEP is the legal plan that spells out a student&rsquo;s special education services. In 2024&ndash;25, 42,899 CCSD students had one, 14.49% of 296,145 students on validation day. State law funds students with disabilities up to 13% of enrollment, with half funding above that, so roughly 4,400 CCSD students fall past the cap. The per-student figures divide FY2026 budget amounts by that 2024&ndash;25 count, so treat them as rough averages, not funding rates. <a href="https://nevadareportcard.nv.gov/PDF/2025/02.E.pdf#page=17" target="_blank" rel="noopener">Nevada Report Card 2024&ndash;25 &#8599;</a> &middot; <a href="https://www.leg.state.nv.us/nrs/nrs-387.html#NRS387Sec122" target="_blank" rel="noopener">NRS 387.122 &#8599;</a></p>
+    <p><b>Special education also appears outside this fund.</b> The General Fund includes a separate $28.4M special-programs line shown above. Federal grants, including IDEA, support special education through other accounts; the $2.4M General Fund federal node is not CCSD’s total federal funding. The $726.6M is a fund total, not a districtwide total for all special education services. <a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=5" target="_blank" rel="noopener">Budget pp. 4, 79–89 ↗</a> · <a href="https://ssd.ccsd.net/personnel-and-finance-department/" target="_blank" rel="noopener">CCSD special education finance ↗</a></p>
+    <p><b>Scope and rounding.</b> This map uses the FY2026 Final Budget adopted May 19, 2025, for the year ending June 30, 2026; these are planned amounts, not actual spending or a later amended budget. The General Fund’s 56% / 44% split refers to roughly $3.206B in spending, excluding transfers and the ending balance. About $0.427M in General Fund facilities spending is included in that total but not separately drawn. Carryover &amp; Other includes $663.2M opening balance and $50.45M other financing sources. The $193M ending balance is retained, not spent. Food service, capital projects and other funds are not fully expanded here. CCSD budgets $6.85B in expenditures across governmental funds. Figures are rounded; totals use the budget’s reported subtotals.</p>
+  </div>
+  <details class="audit">
+    <summary>Check the exact amounts and sources</summary>
+    <div class="audit-table-wrap"><table><caption>FY2026 Final Budget · Final Approved column · printed page numbers</caption><thead><tr><th scope="col">Item</th><th scope="col">Budgeted dollars</th><th scope="col">Source page</th></tr></thead><tbody>
+      <tr><td>PCFP funding total (all funds)</td><td>$3,558,516,617</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=3">2</a></td></tr>
+      <tr><td>PCFP special education already inside General Fund state revenue</td><td>$383,965,616</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=6">5</a></td></tr>
+      <tr><td>General Fund → Special Education Fund</td><td>$572,699,871</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=105">104</a></td></tr>
+      <tr><td>Direct state Special Education Services Account aid</td><td>$153,947,750</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=17">16</a></td></tr>
+      <tr><td>Special Education Fund resources / expenditures</td><td>$726,647,621</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=18">17</a>, <a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=23">22</a></td></tr>
+      <tr><td>Special Education Fund special programs</td><td>$619,887,847</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=19">18–19</a></td></tr>
+      <tr><td>Special Education Fund support services</td><td>$104,437,774</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=21">20–21</a></td></tr>
+      <tr><td>Special Education Fund interdistrict payments</td><td>$2,322,000</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=23">22</a></td></tr>
+      <tr><td>Students with an IEP, CCSD, 2024&ndash;25 validation day</td><td>42,899 (14.49%)</td><td><a href="https://nevadareportcard.nv.gov/PDF/2025/02.E.pdf#page=17">Report Card p. 17</a></td></tr>
+      <tr><td>CCSD students, 2024&ndash;25 validation day (report card basis)</td><td>296,145</td><td><a href="https://nevadareportcard.nv.gov/PDF/2025/02.E.pdf#page=17">Report Card p. 17</a></td></tr>
+      <tr><td>Special Education Services Account, FY2024 actual / FY2025 estimated</td><td>$149,620,959 / $154,762,644</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=17">16</a></td></tr>
+      <tr><td>Federal IDEA spending, FY2025 actual (Part B $62,433,853 + Preschool $1,276,297)</td><td>$63,710,150</td><td><a href="https://resources.finalsite.net/images/v1772555081/ccsdnet/swiie6cwphteqr2e8bab/2025-ACFR-2-26-2026.pdf#page=282">ACFR p. 253</a></td></tr>
+      <tr><td>Separate special programs in General Fund</td><td>$28,366,741</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=5">4</a></td></tr>
+    </tbody></table></div>
+    <p>The Special Education Fund’s instruction and direct-support details are calculated from the object rows on printed page 18. The source’s individually rounded line items can differ from a reported subtotal by $1; this map retains the official subtotals. The two transportation lines belong to different budget groupings and together total about $106.2M.</p>
+    <p>IEP math: 13% &times; 296,145 = 38,499 students fully funded; 42,899 &minus; 38,499 = 4,400 over the cap. $726,647,621 &divide; 42,899 = $16,939 per student with an IEP; $153,947,750 &divide; 42,899 = $3,589 of state services-account aid per student. These mix an FY2026 budget with a 2024&ndash;25 count, and the state uses its own enrollment counts for funding, so they are approximations. Instruction is 99% salaries and benefits ($361,876,653 + $193,021,042).</p>
+    <p>General Fund reconciliation: $3,206,021,539 in expenditures + $593,937,610 in transfers + $192,972,821 in ending balance ≈ $3,992,931,971 in resources (a $1 source rounding difference). English Learners / Gifted transfers total $21,237,739.</p>
+    <p><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151" target="_blank" rel="noopener">Open the official FY2026 Final Budget ↗</a> · <a href="https://www.ccsd.net/resources/bfu-local-state-and-federal-reporting" target="_blank" rel="noopener">CCSD financial reports ↗</a> · Checked September 10, 2026; IEP sources checked October 21, 2026.</p>
+  </details>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var green='#1771B7',gold='#7FA3D6',grey='#898A8D',blue='#54565B',navy='#052C49';
+  var wires=[
+    ['statefund','statshare',navy],['statefund','weighted',green],
+    ['statshare','gf',green],['local','gf',green],['fed','gf',green],['carry','gf',grey],
+    ['gf','instr',gold],['gf','support',gold],['gf','transfers',grey],['gf','reserve',grey],
+    ['instr','instrpanel',gold],['support','supportpanel',gold],
+    ['transfers','se-transfer',blue,'transfer'],
+    ['se-transfer','se-fund',blue],['se-state','se-fund',navy],
+    ['se-fund','se-programs',gold],['se-fund','se-support',gold],['se-fund','se-interdistrict',gold],
+    ['se-programs','se-program-detail',gold],['se-support','se-support-detail',gold]
+  ];
+  var canvas=document.getElementById('canvas'),svg=document.getElementById('wires');
+  function rc(el){var r=el.getBoundingClientRect(),c=canvas.getBoundingClientRect();return{l:r.left-c.left,t:r.top-c.top,w:r.width,h:r.height,cx:r.left-c.left+r.width/2,cy:r.top-c.top+r.height/2};}
+  function draw(){
+    var c=canvas.getBoundingClientRect();svg.setAttribute('viewBox','0 0 '+c.width+' '+c.height);svg.replaceChildren();
+    wires.forEach(function(w){
+      var a=document.getElementById(w[0]),b=document.getElementById(w[1]);if(!a||!b)return;
+      var A=rc(a),B=rc(b),d,tipD,sy=A.t+A.h,ty=B.t,my=sy+(ty-sy)/2;
+      if(w[3]==='transfer'){
+        var rail=c.width-5;
+        var exitY=Math.max.apply(null,Array.from(a.closest('.tier').querySelectorAll('.node')).map(function(el){var R=rc(el);return R.t+R.h;}))+18;
+        d='M'+A.cx+' '+sy+' V'+exitY+' H'+rail+' V'+(B.t-28)+' H'+B.cx+' V'+B.t;
+        tipD='M'+B.cx+' '+B.t+' l-5 -8 l10 0 z';
+      }else if(B.t>=sy-4){
+        // Use an outer rail when a stacked layout puts another card between parent and child.
+        var blocked=Array.from(canvas.querySelectorAll('.node,.group')).some(function(el){
+          if(el===a||el===b||el.contains(a)||el.contains(b)||a.contains(el)||b.contains(el))return false;
+          var R=rc(el);return R.t<ty-8&&R.t+R.h>sy+8&&((A.cx>R.l-3&&A.cx<R.l+R.w+3)||(B.cx>R.l-3&&B.cx<R.l+R.w+3));
+        });
+        if(blocked){
+          var railX=(w[0]==='support'||w[0]==='se-support')?c.width-12:7;
+          // Leave below the source row and approach above the destination; never cross sibling cards.
+          var sameRow=Array.from(canvas.querySelectorAll('.node')).map(rc).filter(function(R){return Math.abs(R.t-A.t)<5;});
+          var exitY=Math.max.apply(null,sameRow.map(function(R){return R.t+R.h;}).concat([sy]))+12;
+          d='M'+A.cx+' '+sy+' V'+exitY+' H'+railX+' V'+(B.t-14)+' H'+B.cx+' V'+B.t;
+          tipD='M'+B.cx+' '+B.t+' l-5 -8 l10 0 z';
+        }else{
+          d='M'+A.cx+' '+sy+' V'+my+' H'+B.cx+' V'+ty;
+          tipD='M'+B.cx+' '+ty+' l-5 -8 l10 0 z';
+        }
+      }else{
+        var ax=A.l+A.w,bx=B.l,mx=(ax+bx)/2;
+        d='M'+ax+' '+A.cy+' H'+mx+' V'+B.cy+' H'+bx;
+        tipD='M'+bx+' '+B.cy+' l-8 -5 l0 10 z';
+      }
+      var p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);p.setAttribute('fill','none');p.setAttribute('stroke',w[2]);p.setAttribute('stroke-width',w[3]==='transfer'?'3':'2');p.setAttribute('stroke-linejoin','round');p.setAttribute('opacity','.85');p.dataset.from=w[0];p.dataset.to=w[1];svg.appendChild(p);
+      var tip=document.createElementNS('http://www.w3.org/2000/svg','path');tip.setAttribute('d',tipD);tip.setAttribute('fill',w[2]);svg.appendChild(tip);
+    });
+  }
+  var scheduled=false;function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(function(){scheduled=false;draw();});}}
+  window.addEventListener('load',schedule);window.addEventListener('resize',schedule);window.addEventListener('beforeprint',draw);window.addEventListener('afterprint',schedule);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(schedule);
+  if(window.ResizeObserver)new ResizeObserver(schedule).observe(canvas);
+  schedule();
+})();
+</script>
+</body>
+</html>
