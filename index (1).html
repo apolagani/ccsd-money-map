@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CCSD Money Map | FY2026 + Special Education &amp; IEPs</title>
+<title>CCSD Money Map | FY2027 + Special Education &amp; IEPs</title>
 <style>
   :root{
     /* Official CCSD palette (CCSD Media Kit, newsroom.ccsd.net) */
@@ -128,153 +128,160 @@
     <div class="titleblock">
     <h1>CCSD Money Map</h1>
     <div class="subhead"></div>
-    <p class="tagline">How money moves from its sources, through the district, to schools and students &nbsp;&middot;&nbsp; General Fund + Special Education Fund + IEPs, Fiscal Year 2026 Final Budget &nbsp;&middot;&nbsp; ~285,800 students. Adopted May 19, 2025. The General Fund balances: $3.99B available = $3.99B allocated.</p>
+    <p class="tagline">How money moves from its sources, through the district, to schools and students &nbsp;&middot;&nbsp; General Fund + Special Education Fund + IEPs, Fiscal Year 2027 Final Budget (2026&ndash;27), from the district&rsquo;s unit reports workbook. General Fund: $3.76B available, $3.75B assigned to spending, transfers and ending balance, $6.5M not assigned to a line.</p>
     </div>
   </header>
 
   <div class="canvas" id="canvas">
     <svg class="wires" id="wires" aria-hidden="true"></svg>
 
-    <!-- ROW A: total state funding, splitting to the weighted allocation (side) -->
+    <!-- ROW A: total state funding, splitting to the direct special education aid (side) -->
     <div class="tier left" style="margin-bottom:54px">
-      <div class="node source" id="statefund"><span class="label">PCFP funding from the state</span><div class="body">State Education Fund (PCFP)<div class="sub">Excludes separate state grants shown below</div></div><div class="chip">$3.56B</div></div>
-      <div class="node teal" id="weighted"><span class="label">State allocation &middot; bypasses the General Fund</span><div class="body">State Weighted Allocation<div class="sub">at-risk $174M &middot; English learners $159M &middot; gifted $5M</div></div><div class="chip">$338M</div></div>
+      <div class="node source" id="statefund"><span class="label">State funding in this budget file</span><div class="body">State education funding<div class="sub">PCFP to the General Fund + direct special education aid</div></div><div class="chip" title="$3,462,094,831">$3.46B</div></div>
+      <div class="node teal" id="weighted"><span class="label">State aid &middot; bypasses the General Fund</span><div class="body">State special education aid<div class="sub">Goes straight to the Special Education Fund, shown again below</div></div><div class="chip" title="$161,994,636">$162M</div></div>
     </div>
 
     <!-- ROW B: what actually makes up the General Fund -->
     <div class="tier left resource-row" style="margin-bottom:54px">
-      <div class="node green" id="statshare"><span class="label">Available resources ($3.99B)</span><div class="body">State share to General Fund<div class="sub">base $2.696B + transport $141M + special ed $384M</div></div><div class="chip">$3.22B</div></div>
-      <div class="node green" id="local"><div class="body">Local Sources<div class="sub">interest, fees, tuition &amp; other local revenue</div></div><div class="chip">$56M</div></div>
-      <div class="node green" id="fed"><div class="body">Federal<div class="sub">in the General Fund</div></div><div class="chip">$2.4M</div></div>
-      <div class="node grey" id="carry"><div class="body">Carryover & Other<div class="sub">opening fund balance + other sources</div></div><div class="chip">$714M</div></div>
+      <div class="node green" id="statshare"><span class="label">Available resources ($3.76B)</span><div class="body">State share to General Fund<div class="sub">base $2.625B + transport $135M + local special ed $453M + other programs $87M</div></div><div class="chip" title="$3,300,100,195">$3.30B</div></div>
+      <div class="node green" id="local"><div class="body">Local Sources<div class="sub">interest, fees, tuition &amp; other local revenue</div></div><div class="chip" title="$51,130,000">$51M</div></div>
+      <div class="node green" id="fed"><div class="body">Federal<div class="sub">in the General Fund</div></div><div class="chip" title="$2,310,000">$2.3M</div></div>
+      <div class="node grey" id="carry"><div class="body">Carryover & Other<div class="sub">opening fund balance + property sales</div></div><div class="chip" title="$404,225,209">$404M</div></div>
     </div>
 
     <!-- ROW C: hub -->
     <div class="tier" style="margin-bottom:54px">
-      <div class="node green" id="gf" style="transform:scale(1.08)"><span class="label">The main operating account</span><div class="body">CCSD&nbsp;General&nbsp;Fund</div><div class="chip">$3.99B</div></div>
+      <div class="node green" id="gf" style="transform:scale(1.08)"><span class="label">The main operating account</span><div class="body">CCSD&nbsp;General&nbsp;Fund</div><div class="chip" title="$3,757,765,404">$3.76B</div></div>
     </div>
 
     <!-- ROW D: how the resources are allocated -->
     <div class="tier allocations" style="margin-bottom:52px;gap:18px">
-      <div class="node gold" id="instr"><span class="label">How it's allocated ($3.99B)</span><div class="body">Instruction &amp; programs<div class="sub">56% of operating spending</div></div><div class="chip">$1.80B</div></div>
-      <div class="node gold" id="support"><div class="body">Support Services<div class="sub">44% of operating spending</div></div><div class="chip">$1.40B</div></div>
-      <div class="node grey" id="transfers"><div class="body">Transfers to other funds<div class="sub">$573M Special Ed + $21M EL/Gifted<br><a href="#special-education">Follow the special education transfer &darr;</a></div></div><div class="chip">$594M</div></div>
-      <div class="node grey" id="reserve"><div class="body">Ending fund balance<div class="sub">retained, not spent</div></div><div class="chip">$193M</div></div>
+      <div class="node gold" id="instr"><span class="label">How it's allocated ($3.75B)</span><div class="body">Instruction &amp; programs<div class="sub">59% of operating spending</div></div><div class="chip" title="$1,739,605,751">$1.74B</div></div>
+      <div class="node gold" id="support"><div class="body">Support Services<div class="sub">41% of operating spending</div></div><div class="chip" title="$1,230,308,398">$1.23B</div></div>
+      <div class="node grey" id="transfers"><div class="body">Transfers to other funds<div class="sub">$625M Special Ed + $14M other funds<br><a href="#special-education">Follow the special education transfer &darr;</a></div></div><div class="chip" title="$638,584,107">$639M</div></div>
+      <div class="node grey" id="reserve"><div class="body">Ending fund balance<div class="sub">retained, not spent &middot; a further $6.5M is not assigned to any line</div></div><div class="chip" title="$142,742,032">$143M</div></div>
     </div>
 
     <!-- ROW E: children grouped in enclosed panels -->
     <div class="grouprow" id="general-details">
       <div class="group" id="instrpanel"><span class="glabel">Instruction &rarr;</span>
-        <div class="node goldlt"><div class="body">Regular Programs<div class="sub">classroom teachers, aides, supplies</div></div><div class="chip">$1.69B</div></div>
-        <div class="node goldlt" id="gf-special"><div class="body">Special programs in General Fund<div class="sub">Separate from the transfer below</div></div><div class="chip" title="$28,366,741">$28.4M</div></div>
-        <div class="node goldlt"><div class="body">Other programs<div class="sub">CTE, other PK–12, community &amp; activities</div></div><div class="chip" title="$82,285,955">$82.3M</div></div>
+        <div class="node goldlt"><div class="body">Regular Programs<div class="sub">classroom teachers, aides, supplies</div></div><div class="chip" title="$1,636,477,927">$1.64B</div></div>
+        <div class="node goldlt" id="gf-special"><div class="body">Special programs in General Fund<div class="sub">Separate from the transfer below</div></div><div class="chip" title="$7,509,097">$7.5M</div></div>
+        <div class="node goldlt"><div class="body">Other programs<div class="sub">CTE, other PK–12, community &amp; activities</div></div><div class="chip" title="$95,618,726">$95.6M</div></div>
       </div>
       <div class="group" id="supportpanel"><span class="glabel">Support Services &rarr;</span>
-        <div class="node goldlt"><div class="body">Operations & maintenance</div><div class="chip">$522M</div></div>
-        <div class="node goldlt"><div class="body">School administration</div><div class="chip">$331M</div></div>
-        <div class="node goldlt"><div class="body">Student support</div><div class="chip">$185M</div></div>
-        <div class="node goldlt"><div class="body">Instructional staff support</div><div class="chip">$157M</div></div>
-        <div class="node goldlt"><div class="body">Transportation</div><div class="chip">$98M</div></div>
-        <div class="node goldlt"><div class="body">General administration</div><div class="chip">$64M</div></div>
-        <div class="node goldlt"><div class="body">Central services</div><div class="chip">$46M</div></div>
-        <div class="node goldlt"><div class="body">Other support</div><div class="chip">$0.9M</div></div>
+        <div class="node goldlt"><div class="body">Operations & maintenance</div><div class="chip" title="$412,031,549">$412M</div></div>
+        <div class="node goldlt"><div class="body">School administration</div><div class="chip" title="$223,427,145">$223M</div></div>
+        <div class="node goldlt"><div class="body">Student support</div><div class="chip" title="$155,828,990">$156M</div></div>
+        <div class="node goldlt"><div class="body">Instructional staff support</div><div class="chip" title="$146,693,444">$147M</div></div>
+        <div class="node goldlt"><div class="body">Transportation</div><div class="chip" title="$144,373,097">$144M</div></div>
+        <div class="node goldlt"><div class="body">General administration</div><div class="chip" title="$84,072,770">$84M</div></div>
+        <div class="node goldlt"><div class="body">Central services</div><div class="chip" title="$63,431,565">$63M</div></div>
+        <div class="node goldlt"><div class="body">Other support</div><div class="chip" title="$449,839">$0.4M</div></div>
       </div>
     </div>
 
     <section class="special-section" id="special-education" aria-labelledby="special-title">
-      <div class="section-heading"><span class="eyebrow">Follow the $573M transfer</span><h2 id="special-title">Special education &amp; IEPs</h2><p>A separate fund that pays for the services written into students&rsquo; IEPs (Individualized Education Programs), supported by the General Fund and direct state aid.</p></div>
+      <div class="section-heading"><span class="eyebrow">Follow the $625M transfer</span><h2 id="special-title">Special education &amp; IEPs</h2><p>A separate fund that pays for the services written into students&rsquo; IEPs (Individualized Education Programs), supported by the General Fund and direct state aid.</p></div>
       <div class="iep-strip" aria-label="Students with IEPs at CCSD">
         <div class="iep-stat"><b>42,899</b><span>students with an IEP in 2024&ndash;25</span></div>
         <div class="iep-stat alert"><b>14.5%</b><span>of CCSD students, above the 13% of enrollment the state fully funds</span></div>
         <div class="iep-stat"><b>~4,400</b><span>students over that cap, who count for only half funding under state law</span></div>
-        <div class="iep-stat"><b>~$16,900</b><span>Special Ed Fund budget per student with an IEP (FY2026 average)</span></div>
+        <div class="iep-stat"><b>~$18,300</b><span>Special Ed Fund budget per student with an IEP (FY2027 budget, 2024&ndash;25 count)</span></div>
       </div>
       <div class="tier se-inputs">
-        <div class="node grey" id="se-transfer"><span class="label">From transfers above</span><div class="body">General Fund transfer<div class="sub">Same $573M already allocated above</div></div><div class="chip" title="$572,699,871">$572.7M</div></div>
-        <div class="node source" id="se-state"><span class="label">Additional state funding</span><div class="body">Special Education Services Account<div class="sub">Direct state aid based on the number of students with IEPs</div><i class="iep-tag">Scales with IEP count</i></div><div class="chip" title="$153,947,750">$153.9M</div></div>
+        <div class="node grey" id="se-transfer"><span class="label">From transfers above</span><div class="body">General Fund transfer<div class="sub">Same $625M already allocated above</div></div><div class="chip" title="$624,546,058.50">$624.5M</div></div>
+        <div class="node source" id="se-state"><span class="label">Additional state funding</span><div class="body">Special Education Services Account<div class="sub">Direct state aid based on the number of students with IEPs</div><i class="iep-tag">Scales with IEP count</i></div><div class="chip" title="$161,994,636">$162.0M</div></div>
       </div>
       <div class="tier se-hub-row">
-        <div class="node special" id="se-fund"><span class="label">Dedicated special education account</span><div class="body">CCSD Special Education Fund<div class="sub">Pays for IEP services &middot; resources = spending</div></div><div class="chip" title="$726,647,621">$726.6M</div></div>
+        <div class="node special" id="se-fund"><span class="label">Dedicated special education account</span><div class="body">CCSD Special Education Fund<div class="sub">Pays for IEP services</div></div><div class="chip" title="$786,540,694.50">$786.5M</div></div>
       </div>
       <div class="se-columns">
         <div class="se-column">
-          <div class="node gold" id="se-programs"><div class="body">Special programs<div class="sub">Instruction + program-level support</div></div><div class="chip" title="$619,887,847">$619.9M</div></div>
+          <div class="node gold" id="se-programs"><div class="body">Special programs<div class="sub">Instruction + program-level support</div></div><div class="chip" title="$673,331,243">$673.3M</div></div>
           <div class="group se-detail" id="se-program-detail"><span class="glabel">Program spending</span>
-            <div class="node goldlt"><div class="body">Instruction<div class="sub">Staff who deliver IEP instruction; 99% salaries &amp; benefits</div><i class="iep-tag">IEP service</i></div><div class="chip">$559.4M</div></div>
-            <div class="node goldlt"><div class="body">Other direct support</div><div class="chip">$58.0M</div></div>
-            <div class="node goldlt"><div class="body">Program-level transportation</div><div class="chip">$2.5M</div></div>
+            <div class="node goldlt"><div class="body">Instruction<div class="sub">Staff who deliver IEP instruction; over 99% salaries &amp; benefits</div><i class="iep-tag">IEP service</i></div><div class="chip" title="$610,709,059">$610.7M</div></div>
+            <div class="node goldlt"><div class="body">Other direct support</div><div class="chip" title="$60,114,864">$60.1M</div></div>
+            <div class="node goldlt"><div class="body">Program-level transportation</div><div class="chip" title="$2,507,320">$2.5M</div></div>
           </div>
         </div>
         <div class="se-column">
-          <div class="node gold" id="se-support"><div class="body">Support services<div class="sub">Outside the special-programs subtotal</div></div><div class="chip" title="$104,437,774">$104.4M</div></div>
+          <div class="node gold" id="se-support"><div class="body">Support services<div class="sub">Outside the special-programs subtotal</div></div><div class="chip" title="$112,970,534">$113.0M</div></div>
           <div class="group se-detail" id="se-support-detail"><span class="glabel">Support spending</span>
-            <div class="node goldlt"><div class="body">Student transportation<div class="sub">A related service IEP teams can require; separate from $2.5M in programs</div><i class="iep-tag">IEP service</i></div><div class="chip" title="$103,662,892">$103.7M</div></div>
-            <div class="node goldlt"><div class="body">Student support</div><div class="chip" title="$624,270">$624K</div></div>
-            <div class="node goldlt"><div class="body">Operations &amp; maintenance</div><div class="chip" title="$150,612">$151K</div></div>
+            <div class="node goldlt"><div class="body">Student transportation<div class="sub">A related service IEP teams can require; separate from $2.5M in programs</div><i class="iep-tag">IEP service</i></div><div class="chip" title="$112,079,509">$112.1M</div></div>
+            <div class="node goldlt"><div class="body">Student support</div><div class="chip" title="$667,141">$667K</div></div>
+            <div class="node goldlt"><div class="body">Operations &amp; maintenance</div><div class="chip" title="$223,884">$224K</div></div>
           </div>
         </div>
         <div class="se-column se-interdistrict">
-          <div class="node gold" id="se-interdistrict"><div class="body">Interdistrict payments<div class="sub">Payments to other districts</div></div><div class="chip" title="$2,322,000">$2.3M</div></div>
-          <div class="balance-note"><b>This fund balances.</b><br>No opening or ending fund balance, federal revenue, or transfers out are budgeted here.<a class="source-link" href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=18" target="_blank" rel="noopener">Budget pp. 16–22 ↗</a></div>
+          <div class="node gold" id="se-interdistrict"><div class="body">Not assigned to a line<div class="sub">Resources left after all spending lines</div></div><div class="chip" title="$238,917.67">$239K</div></div>
+          <div class="balance-note"><b>Resources exceed spending lines by $238,918.</b><br>No opening or ending fund balance, federal revenue, interdistrict payments or transfers out appear for this fund in the workbook.</div>
         </div>
       </div>
-      <div class="se-reconcile"><strong>$572,699,871 + $153,947,750 = $726,647,621</strong><span>One transfer + direct state aid. The transfer is counted once when combining funds.</span></div>
+      <div class="se-reconcile"><strong>$624,546,058.50 + $161,994,636 = $786,540,694.50</strong><span>One transfer + direct state aid. The transfer is counted once when combining funds.</span></div>
       <aside class="iep-flow" aria-label="How an IEP turns into funding">
         <div class="eyebrow">How an IEP turns into dollars</div>
         <ol class="iep-steps">
           <li><b>Evaluation &amp; IEP</b>A team evaluates the student. If they qualify, the team writes an IEP listing the instruction, related services and supports they get.</li>
           <li><b>Counted for state aid</b>Each student with an IEP counts toward state special ed aid, up to 13% of enrollment. Students past that count at half rate.</li>
-          <li><b>Money reaches the fund</b>That count drives the $153.9M in state aid. The General Fund transfers $572.7M to cover the rest so the fund balances.</li>
+          <li><b>Money reaches the fund</b>That count drives the $162.0M in state aid. The General Fund transfers $624.5M to cover the rest.</li>
           <li><b>Services delivered</b>The fund pays for IEP instruction, related services, transportation, supervision, and supplies and equipment.</li>
         </ol>
-        <p><b>Not every special ed dollar follows the IEP count.</b> The $384M &ldquo;PCFP &ndash; Local Special Education&rdquo; amount inside the General Fund was set from past local spending, so it stayed at $383.97M in both FY2025 and FY2026. Federal IDEA grants are mostly allocated from late-1990s child counts plus population and poverty, not this year&rsquo;s IEP count. <a href="https://www.leg.state.nv.us/nrs/nrs-387.html#NRS387Sec122" target="_blank" rel="noopener">NRS 387.122 &#8599;</a> &middot; <a href="https://www.leg.state.nv.us/nrs/nrs-387.html#NRS387Sec047" target="_blank" rel="noopener">NRS 387.047 &#8599;</a> &middot; <a href="https://www.leg.state.nv.us/division/fiscal/K-12Education/PupilCentered/PupilCentered2025.pdf#page=11" target="_blank" rel="noopener">LCB PCFP overview &#8599;</a> &middot; <a href="https://webapp-strapi-paas-prod-nde-001.azurewebsites.net/uploads/nv_commission_sped_funding_053124_3bc03e8db4.pdf#page=5" target="_blank" rel="noopener">NDE special ed funding &#8599;</a></p>
+        <p><b>Not every special ed dollar follows the IEP count.</b> The $453M &ldquo;Local Special Education&rdquo; PCFP amount inside the General Fund was set from past local spending; it is $453.03M in both the FY2026 amended and FY2027 final columns of the workbook. Federal IDEA grants are mostly allocated from late-1990s child counts plus population and poverty, not this year&rsquo;s IEP count. <a href="https://www.leg.state.nv.us/nrs/nrs-387.html#NRS387Sec122" target="_blank" rel="noopener">NRS 387.122 &#8599;</a> &middot; <a href="https://www.leg.state.nv.us/nrs/nrs-387.html#NRS387Sec047" target="_blank" rel="noopener">NRS 387.047 &#8599;</a> &middot; <a href="https://www.leg.state.nv.us/division/fiscal/K-12Education/PupilCentered/PupilCentered2025.pdf#page=11" target="_blank" rel="noopener">LCB PCFP overview &#8599;</a> &middot; <a href="https://webapp-strapi-paas-prod-nde-001.azurewebsites.net/uploads/nv_commission_sped_funding_053124_3bc03e8db4.pdf#page=5" target="_blank" rel="noopener">NDE special ed funding &#8599;</a></p>
       </aside>
       <aside class="parallel-funding" aria-label="Additional federal special education funding route">
-        <div class="eyebrow">Additional route &middot; Outside the $726.6M fund</div>
+        <div class="eyebrow">Additional route &middot; Outside the $786.5M fund</div>
         <div class="parallel-flow"><span>Federal IDEA grants<small>$63.7M spent in FY2025</small></span><b aria-hidden="true">→</b><span>Nevada Department<br>of Education</span><b aria-hidden="true">→</b><span>CCSD Federal<br>Projects Fund</span><b aria-hidden="true">→</b><span>IEP services for<br>eligible students</span></div>
-        <p>The $63.7M is FY2025 actual spending ($62.4M Part B grants to states + $1.3M preschool), not an FY2026 budget figure, so it is not added to any FY2026 total here. <a href="https://resources.finalsite.net/images/v1772555081/ccsdnet/swiie6cwphteqr2e8bab/2025-ACFR-2-26-2026.pdf#page=282" target="_blank" rel="noopener">CCSD FY2025 ACFR, printed p. 253 ↗</a> · <a href="https://resources.finalsite.net/images/v1771951633/ccsdnet/zozf04giqlc5c0fes2uf/policies.pdf#page=6" target="_blank" rel="noopener">Fund accounting policy ↗</a></p>
+        <p>The $63.7M is FY2025 actual spending ($62.4M Part B grants to states + $1.3M preschool), not an FY2027 budget figure, so it is not added to any FY2027 total here. <a href="https://resources.finalsite.net/images/v1772555081/ccsdnet/swiie6cwphteqr2e8bab/2025-ACFR-2-26-2026.pdf#page=282" target="_blank" rel="noopener">CCSD FY2025 ACFR, printed p. 253 ↗</a> · <a href="https://resources.finalsite.net/images/v1771951633/ccsdnet/zozf04giqlc5c0fes2uf/policies.pdf#page=6" target="_blank" rel="noopener">Fund accounting policy ↗</a></p>
       </aside>
     </section>
   </div>
 
   <div class="legend">
-    <span><i class="sw" style="background:var(--ccsd-navy)"></i>PCFP funding / direct state aid</span>
+    <span><i class="sw" style="background:var(--ccsd-navy)"></i>State funding</span>
     <span><i class="sw" style="background:var(--green)"></i>Available resources &amp; operating account</span>
     <span><i class="sw" style="background:var(--gold);border:1px solid #9DB6DD"></i>Spent running schools</span>
     <span><i class="sw" style="background:var(--grey-bg);border:1px solid var(--ccsd-gray)"></i>Carryover, transfers &amp; ending balance</span>
-    <span><i class="sw" style="background:#fff;border:2px solid var(--ccsd-blue)"></i>Separate weighted allocation</span>
+    <span><i class="sw" style="background:#fff;border:2px solid var(--ccsd-blue)"></i>Direct state special education aid</span>
     <span><i class="sw" style="background:var(--ccsd-darkgray)"></i>Special Education Fund</span>
     <span><i class="iep-tag">IEP</i>Tied to students&rsquo; IEPs</span>
   </div>
 
   <div class="note">
-    <p><b>Read it top to bottom.</b> Nevada’s PCFP provides $3.56B: $3.22B enters the General Fund and $338M goes to separate weighted funds. The General Fund’s $3.22B includes $383,965,616 labeled “PCFP – Local Special Education.” It is already part of the General Fund resources, not another payment into the Special Education Fund. <a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=3" target="_blank" rel="noopener">Budget pp. 2, 5 ↗</a></p>
-    <p><b>What the new branch shows.</b> The $726.6M Special Education Fund receives $572.7M from the General Fund and $153.9M directly from the state’s Special Education Services Account. Its spending is $619.9M in special programs, $104.4M in support services and $2.3M in interdistrict payments. <a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=17" target="_blank" rel="noopener">Budget pp. 16–22, 104 ↗</a></p>
-    <p><b>Where IEPs fit.</b> An IEP is the legal plan that spells out a student&rsquo;s special education services. In 2024&ndash;25, 42,899 CCSD students had one, 14.49% of 296,145 students on validation day. State law funds students with disabilities up to 13% of enrollment, with half funding above that, so roughly 4,400 CCSD students fall past the cap. The per-student figures divide FY2026 budget amounts by that 2024&ndash;25 count, so treat them as rough averages, not funding rates. <a href="https://nevadareportcard.nv.gov/PDF/2025/02.E.pdf#page=17" target="_blank" rel="noopener">Nevada Report Card 2024&ndash;25 &#8599;</a> &middot; <a href="https://www.leg.state.nv.us/nrs/nrs-387.html#NRS387Sec122" target="_blank" rel="noopener">NRS 387.122 &#8599;</a></p>
-    <p><b>Special education also appears outside this fund.</b> The General Fund includes a separate $28.4M special-programs line shown above. Federal grants, including IDEA, support special education through other accounts; the $2.4M General Fund federal node is not CCSD’s total federal funding. The $726.6M is a fund total, not a districtwide total for all special education services. <a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=5" target="_blank" rel="noopener">Budget pp. 4, 79–89 ↗</a> · <a href="https://ssd.ccsd.net/personnel-and-finance-department/" target="_blank" rel="noopener">CCSD special education finance ↗</a></p>
-    <p><b>Scope and rounding.</b> This map uses the FY2026 Final Budget adopted May 19, 2025, for the year ending June 30, 2026; these are planned amounts, not actual spending or a later amended budget. The General Fund’s 56% / 44% split refers to roughly $3.206B in spending, excluding transfers and the ending balance. About $0.427M in General Fund facilities spending is included in that total but not separately drawn. Carryover &amp; Other includes $663.2M opening balance and $50.45M other financing sources. The $193M ending balance is retained, not spent. Food service, capital projects and other funds are not fully expanded here. CCSD budgets $6.85B in expenditures across governmental funds. Figures are rounded; totals use the budget’s reported subtotals.</p>
+    <p><b>Read it top to bottom.</b> The workbook shows $3.46B of state funding: $3.30B of PCFP revenue enters the General Fund and $162M of special education aid goes straight to the Special Education Fund. The General Fund&rsquo;s $3.30B includes $453,025,801 labeled &ldquo;Local Special Education.&rdquo; It is already part of the General Fund resources, not another payment into the Special Education Fund. The state&rsquo;s weighted allocations (at-risk, English learner, gifted) sit in funds this workbook does not cover, so they are no longer drawn.</p>
+    <p><b>What the special education branch shows.</b> The $786.5M Special Education Fund receives $624.5M from the General Fund and $162.0M directly from the state. Its spending lines are $673.3M in special programs and $113.0M in support services; $0.24M of its resources is not assigned to a spending line. No interdistrict payments appear for this fund in the workbook.</p>
+    <p><b>Where IEPs fit.</b> An IEP is the legal plan that spells out a student&rsquo;s special education services. In 2024&ndash;25, 42,899 CCSD students had one, 14.49% of 296,145 students on validation day. State law funds students with disabilities up to 13% of enrollment, with half funding above that, so roughly 4,400 CCSD students fall past the cap. The per-student figures divide FY2027 budget amounts by that 2024&ndash;25 count, so treat them as rough averages, not funding rates. <a href="https://nevadareportcard.nv.gov/PDF/2025/02.E.pdf#page=17" target="_blank" rel="noopener">Nevada Report Card 2024&ndash;25 &#8599;</a> &middot; <a href="https://www.leg.state.nv.us/nrs/nrs-387.html#NRS387Sec122" target="_blank" rel="noopener">NRS 387.122 &#8599;</a></p>
+    <p><b>Special education also appears outside this fund.</b> The General Fund includes a separate $7.5M special-programs line shown above. Federal grants, including IDEA, support special education through other accounts; the $2.3M General Fund federal node is not CCSD&rsquo;s total federal funding. The $786.5M is a fund total, not a districtwide total for all special education services. <a href="https://ssd.ccsd.net/personnel-and-finance-department/" target="_blank" rel="noopener">CCSD special education finance ↗</a></p>
+    <p><b>Scope and rounding.</b> Every budget figure on this map is a rollup of the &ldquo;2027 FB&rdquo; column of the district&rsquo;s FY2027 Final Budget unit reports workbook (Budget Allocations 2026&ndash;27, Funds 100, 140, 160, 170 and 250); these are planned amounts, not actual spending. The General Fund&rsquo;s 59% / 41% split refers to $2.970B in spending, excluding transfers and the ending balance. Other support is $0.45M of facilities spending. Carryover &amp; Other is the $403.8M opening balance plus $0.45M from property sales. The $143M ending balance is retained, not spent. General Fund resources exceed the lines in the workbook by $6.5M, and the Special Education Fund&rsquo;s by $0.24M; those amounts are shown as not assigned. The workbook&rsquo;s three small funds (140, 160 and 170, about $5.6M of spending) and funds outside it, such as the weighted funds, food service and capital projects, are not drawn. Student and IEP counts come from the 2024&ndash;25 Nevada Report Card, not the workbook. Figures are rounded.</p>
   </div>
   <details class="audit">
     <summary>Check the exact amounts and sources</summary>
-    <div class="audit-table-wrap"><table><caption>FY2026 Final Budget · Final Approved column · printed page numbers</caption><thead><tr><th scope="col">Item</th><th scope="col">Budgeted dollars</th><th scope="col">Source page</th></tr></thead><tbody>
-      <tr><td>PCFP funding total (all funds)</td><td>$3,558,516,617</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=3">2</a></td></tr>
-      <tr><td>PCFP special education already inside General Fund state revenue</td><td>$383,965,616</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=6">5</a></td></tr>
-      <tr><td>General Fund → Special Education Fund</td><td>$572,699,871</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=105">104</a></td></tr>
-      <tr><td>Direct state Special Education Services Account aid</td><td>$153,947,750</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=17">16</a></td></tr>
-      <tr><td>Special Education Fund resources / expenditures</td><td>$726,647,621</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=18">17</a>, <a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=23">22</a></td></tr>
-      <tr><td>Special Education Fund special programs</td><td>$619,887,847</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=19">18–19</a></td></tr>
-      <tr><td>Special Education Fund support services</td><td>$104,437,774</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=21">20–21</a></td></tr>
-      <tr><td>Special Education Fund interdistrict payments</td><td>$2,322,000</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=23">22</a></td></tr>
+    <div class="audit-table-wrap"><table><caption>FY2027 Final Budget · unit reports workbook, 2027 FB column</caption><thead><tr><th scope="col">Item</th><th scope="col">Budgeted dollars</th><th scope="col">Source</th></tr></thead><tbody>
+      <tr><td>General Fund state (PCFP) revenue</td><td>$3,300,100,195</td><td>Fund 100, G/L 4311x</td></tr>
+      <tr><td>PCFP local special education already inside General Fund state revenue</td><td>$453,025,801</td><td>Fund 100, G/L 43115</td></tr>
+      <tr><td>General Fund local revenue</td><td>$51,130,000</td><td>Fund 100, G/L 41xx</td></tr>
+      <tr><td>General Fund federal revenue</td><td>$2,310,000</td><td>Fund 100, G/L 44xx</td></tr>
+      <tr><td>General Fund opening balance + sale of property</td><td>$403,775,209 + $450,000</td><td>Fund 100, G/L 7000 and 4530</td></tr>
+      <tr><td>General Fund resources</td><td>$3,757,765,404</td><td>Sum of the rows above</td></tr>
+      <tr><td>General Fund spending, excluding transfers</td><td>$2,969,914,149</td><td>Fund 100, G/L 5xxx&ndash;6xxx less 5910</td></tr>
+      <tr><td>General Fund transfers out</td><td>$638,584,107</td><td>Fund 100, G/L 5910</td></tr>
+      <tr><td>General Fund ending balance (unassigned)</td><td>$142,742,032</td><td>Fund 100, G/L 7000000015</td></tr>
+      <tr><td>General Fund resources not assigned to a line</td><td>$6,525,116</td><td>Resources less the three rows above</td></tr>
+      <tr><td>General Fund → Special Education Fund</td><td>$624,546,058.50</td><td>Fund 250, G/L 4520</td></tr>
+      <tr><td>Direct state special education aid</td><td>$161,994,636</td><td>Fund 250, G/L 4327</td></tr>
+      <tr><td>Special Education Fund resources</td><td>$786,540,694.50</td><td>Sum of the two rows above</td></tr>
+      <tr><td>Special Education Fund special programs</td><td>$673,331,243</td><td>Fund 250, program 0200</td></tr>
+      <tr><td>Special Education Fund support services</td><td>$112,970,534</td><td>Fund 250, program 1000</td></tr>
+      <tr><td>Special Education Fund resources not assigned to a line</td><td>$238,918</td><td>Resources less the two rows above</td></tr>
+      <tr><td>Separate special programs in General Fund</td><td>$7,509,097</td><td>Fund 100, program 0200</td></tr>
       <tr><td>Students with an IEP, CCSD, 2024&ndash;25 validation day</td><td>42,899 (14.49%)</td><td><a href="https://nevadareportcard.nv.gov/PDF/2025/02.E.pdf#page=17">Report Card p. 17</a></td></tr>
       <tr><td>CCSD students, 2024&ndash;25 validation day (report card basis)</td><td>296,145</td><td><a href="https://nevadareportcard.nv.gov/PDF/2025/02.E.pdf#page=17">Report Card p. 17</a></td></tr>
-      <tr><td>Special Education Services Account, FY2024 actual / FY2025 estimated</td><td>$149,620,959 / $154,762,644</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=17">16</a></td></tr>
       <tr><td>Federal IDEA spending, FY2025 actual (Part B $62,433,853 + Preschool $1,276,297)</td><td>$63,710,150</td><td><a href="https://resources.finalsite.net/images/v1772555081/ccsdnet/swiie6cwphteqr2e8bab/2025-ACFR-2-26-2026.pdf#page=282">ACFR p. 253</a></td></tr>
-      <tr><td>Separate special programs in General Fund</td><td>$28,366,741</td><td><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151#page=5">4</a></td></tr>
     </tbody></table></div>
-    <p>The Special Education Fund’s instruction and direct-support details are calculated from the object rows on printed page 18. The source’s individually rounded line items can differ from a reported subtotal by $1; this map retains the official subtotals. The two transportation lines belong to different budget groupings and together total about $106.2M.</p>
-    <p>IEP math: 13% &times; 296,145 = 38,499 students fully funded; 42,899 &minus; 38,499 = 4,400 over the cap. $726,647,621 &divide; 42,899 = $16,939 per student with an IEP; $153,947,750 &divide; 42,899 = $3,589 of state services-account aid per student. These mix an FY2026 budget with a 2024&ndash;25 count, and the state uses its own enrollment counts for funding, so they are approximations. Instruction is 99% salaries and benefits ($361,876,653 + $193,021,042).</p>
-    <p>General Fund reconciliation: $3,206,021,539 in expenditures + $593,937,610 in transfers + $192,972,821 in ending balance ≈ $3,992,931,971 in resources (a $1 source rounding difference). English Learners / Gifted transfers total $21,237,739.</p>
-    <p><a href="https://www.ccsd.net/fs/resource-manager/view/3f77c5ed-b3ac-4817-8df8-fb642c7d8151" target="_blank" rel="noopener">Open the official FY2026 Final Budget ↗</a> · <a href="https://www.ccsd.net/resources/bfu-local-state-and-federal-reporting" target="_blank" rel="noopener">CCSD financial reports ↗</a> · Checked September 10, 2026; IEP sources checked October 21, 2026.</p>
+    <p>Categories come from the workbook&rsquo;s functional-area code on each line (program, then function): programs 0100&ndash;0920 are drawn as instruction &amp; programs and program 1000 as support services. The two special education transportation lines belong to different groupings and together total about $114.6M.</p>
+    <p>IEP math: 13% &times; 296,145 = 38,499 students fully funded; 42,899 &minus; 38,499 = 4,400 over the cap. $786,540,694.50 &divide; 42,899 = $18,335 per student with an IEP; $161,994,636 &divide; 42,899 = $3,776 of direct state aid per student. These mix an FY2027 budget with a 2024&ndash;25 count, and the state uses its own enrollment counts for funding, so they are approximations. Instruction is 99.8% salaries and benefits ($396,224,534 + $213,118,225 of $610,709,059).</p>
+    <p>General Fund reconciliation: $2,969,914,149 in spending + $638,584,107 in transfers + $142,742,032 in ending balance = $3,751,240,288 assigned, against $3,757,765,404 in resources; the remaining $6,525,116 is not assigned to a line in the workbook. Of the transfers, $624,546,058.50 goes to the Special Education Fund and $14,038,049 to funds outside the workbook.</p>
+    <p>Budget figures: FY2027 Final Budget unit reports workbook, rolled up November 13, 2026 · <a href="https://www.ccsd.net/resources/bfu-local-state-and-federal-reporting" target="_blank" rel="noopener">CCSD financial reports ↗</a> · IEP sources checked October 21, 2026.</p>
   </details>
 </div>
 
